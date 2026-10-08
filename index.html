@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Aagam Sheth's Birthday Dinner · 10 October</title>
+<meta name="description" content="A pizza tasting ceremony at KS Charcoal on Saturday, 10 October. Kindly reply by 8 October.">
+<meta name="theme-color" content="#F6EBD6">
+<meta property="og:title" content="Aagam Sheth's Birthday Dinner">
+<meta property="og:description" content="A pizza tasting ceremony at KS Charcoal. Saturday, 10 October, 7:30 pm. RSVP by 8 October.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://october-10.aagamsheth.com">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🍕%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,400;1,500&amp;family=Jost:wght@400;500&amp;display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="floaters" id="floaters" aria-hidden="true"></div>
+<canvas id="confetti" aria-hidden="true"></canvas>
+
+<main class="stage">
+
+  <!-- 1. The invitation -->
+  <section class="card invite" id="view-invite" aria-labelledby="host-name">
+    <div class="card-inner">
+      <button class="emblem reveal" id="emblem" type="button" aria-label="Throw some confetti" style="--i:0"><span class="spin" aria-hidden="true">🍕</span></button>
+      <p class="label reveal" style="--i:1">You are cordially invited</p>
+      <h1 id="host-name" class="reveal" style="--i:2">Aagam<br>Sheth</h1>
+      <hr class="rule reveal" style="--i:3">
+      <p class="lede reveal" style="--i:4">requests the pleasure of your company<br>at a birthday dinner</p>
+      <p class="label reveal" style="--i:5">A Pizza Tasting Ceremony</p>
+      <p class="date reveal" style="--i:6">Saturday, the tenth of October</p>
+      <p class="time reveal" style="--i:7">two thousand twenty-six &middot; half past seven in the evening</p>
+      <p class="venue reveal" style="--i:8">KS Charcoal</p>
+      <a class="maplink reveal" style="--i:9" href="https://maps.app.goo.gl/UkPQQPJjdMraWyyo9?g_st=ic" target="_blank" rel="noopener">View location on Google Maps</a>
+      <div class="rsvp-block reveal" style="--i:10">
+        <p class="label">R.S.V.P.</p>
+        <p class="lede">Kindly reply by the eighth of October</p>
+        <a class="btn" id="rsvp-btn" href="#rsvp">RSVP</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. The form -->
+  <section class="card formcard" id="view-form" aria-labelledby="step-title" hidden>
+    <div class="card-inner">
+      <div class="pizza-wrap" id="pizza-wrap">
+        <div id="pizza"></div>
+      </div>
+      <p class="label" id="step-count" aria-live="polite">Step 1 of 7</p>
+
+      <form id="rsvp-form" novalidate autocomplete="on">
+        <h2 class="visually-hidden" id="step-title">RSVP</h2>
+
+        <fieldset class="step" data-step="name">
+          <legend class="q">What's your name?</legend>
+          <label class="visually-hidden" for="f-name">Your full name</label>
+          <input class="field" id="f-name" name="name" type="text" autocomplete="name" placeholder="Full name" maxlength="80">
+        </fieldset>
+
+        <fieldset class="step" data-step="email">
+          <legend class="q">Where should we send your invite?</legend>
+          <p class="hint">You'll get a confirmation and a calendar file.</p>
+          <label class="visually-hidden" for="f-email">Your email address</label>
+          <input class="field" id="f-email" name="email" type="email" inputmode="email" autocomplete="email" autocapitalize="off" spellcheck="false" placeholder="name@example.com" maxlength="120">
+        </fieldset>
+
+        <fieldset class="step" data-step="phone">
+          <legend class="q">Best number to reach you?</legend>
+          <label class="visually-hidden" for="f-phone">Your phone number</label>
+          <input class="field" id="f-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="+91 98765 43210" maxlength="24">
+        </fieldset>
+
+        <fieldset class="step" data-step="plus">
+          <legend class="q">Bringing a plus 1?</legend>
+          <p class="hint">One guest is welcome at the table.</p>
+          <div class="choices">
+            <label class="choice"><input type="radio" name="plus" value="yes"><span>Yes, we'll be two</span></label>
+            <label class="choice"><input type="radio" name="plus" value="no"><span>Just me</span></label>
+          </div>
+        </fieldset>
+
+        <fieldset class="step" data-step="plusDetails">
+          <legend class="q">Who's joining you?</legend>
+          <label class="visually-hidden" for="f-pname">Plus 1 name</label>
+          <input class="field" id="f-pname" name="plus_one_name" type="text" placeholder="Their full name" maxlength="80">
+          <label class="visually-hidden" for="f-pphone">Plus 1 phone number (optional)</label>
+          <input class="field" id="f-pphone" name="plus_one_phone" type="tel" inputmode="tel" placeholder="Their number (optional)" maxlength="24">
+          <label class="visually-hidden" for="f-pnotes">Plus 1 allergies or notes (optional)</label>
+          <input class="field" id="f-pnotes" name="plus_one_notes" type="text" placeholder="Their allergies or notes (optional)" maxlength="200">
+        </fieldset>
+
+        <fieldset class="step" data-step="notes">
+          <legend class="q">Any allergies or notes?</legend>
+          <p class="hint">Leave this blank if there's nothing to flag.</p>
+          <label class="visually-hidden" for="f-notes">Allergies or notes</label>
+          <textarea class="field area" id="f-notes" name="notes" rows="3" placeholder="Allergies, a song request, anything" maxlength="400"></textarea>
+        </fieldset>
+
+        <fieldset class="step" data-step="review">
+          <legend class="q">Ready to send?</legend>
+          <dl class="review" id="review"></dl>
+        </fieldset>
+
+        <!-- Honeypot: real guests never see or fill this -->
+        <div class="visually-hidden" aria-hidden="true">
+          <label>Leave this empty <input type="text" name="_gotcha" id="f-gotcha" tabindex="-1" autocomplete="off"></label>
+        </div>
+
+        <p class="error" id="error" role="alert"></p>
+
+        <div class="actions">
+          <button class="btn ghost" type="button" id="back-btn">Back</button>
+          <button class="btn" type="submit" id="next-btn">Continue</button>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- 3. Thank you -->
+  <section class="card done" id="view-done" aria-labelledby="done-title" hidden>
+    <div class="card-inner">
+      <div class="big-pizza" aria-hidden="true">🍕</div>
+      <p class="label">You're on the list</p>
+      <h2 id="done-title" class="done-title">Buon appetito, <span id="done-name">friend</span>.</h2>
+      <p class="lede" id="done-sub">Saturday, the tenth of October<br>half past seven in the evening</p>
+      <p class="hint" id="done-mail"></p>
+      <p class="venue">KS Charcoal</p>
+      <a class="maplink" href="https://maps.app.goo.gl/UkPQQPJjdMraWyyo9?g_st=ic" target="_blank" rel="noopener">View location on Google Maps</a>
+      <div class="actions">
+        <button class="btn" type="button" id="cal-btn">Add to calendar</button>
+        <button class="btn ghost" type="button" id="again-btn">More confetti</button>
+      </div>
+      <p class="demo-note" id="demo-note" hidden>Preview mode: no emails were sent. Add your Apps Script URL in app.js to go live.</p>
+    </div>
+  </section>
+
+</main>
+
+<noscript><p style="position:relative;z-index:2;text-align:center;font:500 18px Georgia,serif;padding:24px">Please turn on JavaScript to RSVP. Otherwise, send Aagam a direct message by the eighth of October.</p></noscript>
+<script src="app.js"></script>
+</body>
+</html>
